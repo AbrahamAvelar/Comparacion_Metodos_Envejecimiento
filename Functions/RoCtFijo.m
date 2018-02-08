@@ -4,7 +4,7 @@ horaInt=tExponencial;
 ExT=t;
 mapita=JET;
 for pl=pls%[10:13]
-    CleanData(pl).tOut=[];
+%    CleanData(pl).tOut=[];  comment and use calculaTiempos instead 8-feb-18
     NuevosDias=EncuentraDias(CleanData(pl), odTh);
     NuevosDias=[NuevosDias length(CleanData(pl).t)];
     difcol=floor( length(mapita)/(length(NuevosDias)-1) );
@@ -61,8 +61,8 @@ for pl=pls%[10:13]
                 
             end
         end
-        CleanData(pl).tOut=[CleanData(pl).tOut CleanData(pl).t(NuevosDias(Dia):NuevosDias(Dia+1)-1)-CleanData(pl).t(NuevosDias(Dia) )];
+%        CleanData(pl).tOut=[CleanData(pl).tOut CleanData(pl).t(NuevosDias(Dia):NuevosDias(Dia+1)-1)-CleanData(pl).t(NuevosDias(Dia) )];  comment and use calculaTiempos instead 8-feb-18
     end
-	CleanData(pl).Tdays=CleanData(pl).t(NuevosDias)-CleanData(pl).t(1);
+%	CleanData(pl).Tdays=CleanData(pl).t(NuevosDias)-CleanData(pl).t(1);  comment and use calculaTiempos instead 8-feb-18
 end
 end
