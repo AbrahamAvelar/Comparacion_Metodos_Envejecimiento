@@ -2,7 +2,7 @@ Aqui van los scripts que se vayan haciendo para comparar las distintas formas de
 
 
 Para calcular la s a un tiempo fijo:
-    BgDataAll = CorrectInoculeTime(BgDataAll, odTh, ExcelHorasInoculos ) %**Opcional**
+    BgDataAll = CorrectInoculeTime(BgDataAll, platos, odTh, ExcelHorasInoculos ) %**Opcional**
     BgDataAll = calculaTiempos(BgDataAll, platos, odTh);
     TBgDataAll = RoCtFijo(BgDataAll,tfijo, horasExponencial, odTh, platos, pozos, figuras);
     TBgDataAll = CalcRelatSurv(TBgDataAll, platos,odTh,pozos);
