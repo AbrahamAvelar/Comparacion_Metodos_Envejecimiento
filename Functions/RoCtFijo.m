@@ -1,6 +1,5 @@
 function CleanData = RoCtFijo (CleanData, t, tExponencial, odTh, pls, pozos, figura)
 % BgDataAll = RoCtFijo (CleanData, t, tExponencial, odTh, pls, pozos, figura)
-% BgDataAll = RoCtFijo (CleanData, t, tExponencial, odTh, pls, pozos, figura)
 % t es un vector con 2 tiempos: donde empiezan y terminan las mediciones
 % a tomar en cuenta. Idealmente seria la fase exponencial
 % tExponencial es la hora a la que se hace la interpolacion.
