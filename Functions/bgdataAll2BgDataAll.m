@@ -6,7 +6,7 @@ function BgDataAll = bgdataAll2BgDataAll (bgdataAll, platos)
 %  porque los scripts para hacer lo de Noam y/o las comparaciones entre
 %  RoCtFijo vs RoCODFija.
 
-
+campos=fieldnames(bgdataAll);
 for pl = platos
     
     BgDataAll(pl).OD=bgdataAll(pl).od;
@@ -14,6 +14,11 @@ for pl = platos
     BgDataAll(pl).RFP=bgdataAll(pl).rfp;
     BgDataAll(pl).t= bgdataAll(pl).t'/24;
     BgDataAll(pl).Tdays=bgdataAll(pl).tDays';
+    
+    for i=1:length(campos)
+        field = campos(i);
+        BgDataAll(pl).(str2mat(field)) = bgdataAll(pl).(str2mat(field));
+    end
 
 end
 end
