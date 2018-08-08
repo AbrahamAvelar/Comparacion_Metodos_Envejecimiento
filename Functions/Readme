@@ -6,3 +6,26 @@ Para calcular la s a un tiempo fijo:
     BgDataAll = calculaTiempos(BgDataAll, platos, odTh);
     TBgDataAll = RoCtFijo(BgDataAll,tfijo, horasExponencial, odTh, platos, pozos, figuras);
     TBgDataAll = CalcRelatSurv(TBgDataAll, platos,odTh,pozos);
+    
+    
+Uso recomendado para calcular bigS del modelo Ax+ST+Gt+CTt = ln(RFP/CFP)
+    refs=[i j k] % índices de las posiciones en el plato que tienen competencias Ref:Rev
+    plt=[i j k] % platos a los que les quieres calcular la S
+    OnlyMutStrain = [i]; %creo que pueden ser muchos pozos si eso tienes.
+    OnlyRefStrain = [j];
+    
+    Tiempo0=1 % si también corres 'ExtractExponentialPoints' el siguiente comando esta bandera hace que incluya el t=0 de cada día
+    showfig=1 % Para que se vea la figura de los puntos de la Fase exponencial
+    ExpBgDataAll = ExtractExponentialPoints(BgDataAll, plt, showfig, refs, Tiempo0 )% Útil si se tienen muchos puntos por día. Mejora el cálculo de G
+
+    odTh=.22; %qué cambio en OD es para un nuevo día
+    ExpBgDataAll = calculaTiempos(ExpBgDataAll, plt, odTh);
+    bgdataPrueba=BgDataAll2bgdataEGG(ExpBgDataAll,plt,'CFP','RFP',1); %convierte a formato EGG
+    BgDataSinFondo = restarFondoFPs(bgdataPrueba, plt, OnlyMutStrain,OnlyRefStrain) %Quita el fondo con 
+
+    datosExp=1
+    [EXPbgdataSEGG,EXPdata2SEGG]=CalculaModeloNS_ScriptEGG(BgDataSinFondo,plt,refs,OnlyMutStrain,OnlyRefStrain,datosExp);
+
+
+
+
