@@ -20,7 +20,7 @@ Uso recomendado para calcular bigS del modelo Ax+ST+Gt+CTt = ln(RFP/CFP)
 
     odTh=.22; %qué cambio en OD es para un nuevo día
     ExpBgDataAll = calculaTiempos(ExpBgDataAll, plt, odTh);
-    bgdataPrueba=BgDataAll2bgdataEGG(ExpBgDataAll,plt,'CFP','RFP',1); %convierte a formato EGG
+    bgdataPrueba=BgDataAll2bgdataEGG(ExpBgDataAll,plt,'CFP','RFP',exp); %convierte a formato EGG. exp=1Son datos que provienen de 'ExtractExponentialPoints', si no provienen de esa funcion, entrnces exp=0
     BgDataSinFondo = restarFondoFPs(bgdataPrueba, plt, OnlyMutStrain,OnlyRefStrain) %Quita el fondo con 
 
     datosExp=1
