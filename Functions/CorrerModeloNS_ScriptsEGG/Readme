@@ -1,0 +1,34 @@
+
+    
+    
+    
+Uso recomendado para calcular bigS del modelo Ax+ST+Gt+CTt = ln(RFP/CFP)
+
+escencialmente hay que correr esto
+[bgdataAll_ASGC, data2_ASGC]= ModelASGC(bgdata,plt,refs,OnlyMutStrain,OnlyRefStrain,medicionesminimas,datExtExponential,extraPlRefs);
+
+Tiene estos parámetros a tomar en cuenta y algunos scripts que preparan para optimizar el input
+    refs=[i j k] % índices de las posiciones en el plato que tienen competencias Ref:Rev
+    plt=[i j k] % platos a los que les quieres calcular la S
+    
+    Tiempo0=1 % si también corres 'ExtractExponentialPoints' el siguiente comando esta bandera hace que incluya el t=0 de cada día
+    showfig=1 % Para que se vea la figura de los puntos de la Fase exponencial
+    ExpBgDataAll = ExtractExponentialPoints(BgDataAll, plt, showfig, refs, Tiempo0 )% Útil si se tienen muchos puntos por día. Mejora el cálculo de G
+
+    odTh=.22; %qué cambio en OD es para un nuevo día
+    ExpBgDataAll = calculaTiempos(ExpBgDataAll, plt, odTh);
+    bgdataPrueba=BgDataAll2bgdataEGG(ExpBgDataAll,plt,'CFP','RFP',exp); %convierte a formato EGG. exp=1Son datos que provienen de 'ExtractExponentialPoints', si no provienen de esa funcion, entrnces exp=0
+    
+    OnlyMutStrain = [i]; % indice o indices de las posiciones dentro del plato que tienen solo la cepa referencia CFP
+    OnlyRefStrain = [j]; % indice o indices de las posiciones dentro del plato que tienen solo la cepa referencia RFP (o la que sea de color de todas las mutantes)
+    BgDataSinFondo = restarFondoFPs(bgdataPrueba, plt, OnlyMutStrain,OnlyRefStrain) %Quita el fondo con 
+
+    datosExp=1
+    [EXPbgdataSEGG,EXPdata2SEGG]=CalculaModeloNS_ScriptEGG(BgDataSinFondo,plt,refs,OnlyMutStrain,OnlyRefStrain,datosExp);
+    
+    o esta otra opción que incluye 
+    medicionesminimas = 24% el número mínimo de mediciones para una competencia que se consideran aceptables,  si hay menos de este número te pone NaN
+    extraPlRefs = [k]; % k=numero de plato que tiene las referencias. Si hay refereencias de un solo color en todos los platos, entonces k=0.
+    [bgdataAll_CMAN, data2_CMAN]= ModelASGC(BgDataSinFondo,plt,refs,OnlyMutStrain,OnlyRefStrain,medicionesminimas,datExtExponential,extraPlRefs);
+
+
