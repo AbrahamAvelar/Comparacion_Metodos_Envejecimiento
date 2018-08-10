@@ -25,7 +25,10 @@ Uso recomendado para calcular bigS del modelo Ax+ST+Gt+CTt = ln(RFP/CFP)
 
     datosExp=1
     [EXPbgdataSEGG,EXPdata2SEGG]=CalculaModeloNS_ScriptEGG(BgDataSinFondo,plt,refs,OnlyMutStrain,OnlyRefStrain,datosExp);
-
-
+    
+    o esta otra opción que incluye 
+    medicionesminimas = 24% el número mínimo de mediciones para una competencia que se consideran aceptables,  si hay menos de este número te pone NaN
+    extraPlRefs = plato% El número de plato que contiene las mediciones de referencia de OnlyMutStrain y OnlyRefStrain. Si le pones 0 es que cada plato tiene sus referencias
+    [bgdataAll_CMAN, data2_CMAN]= ModelASGC(bgdataPrueba,plt,refs,OnlyMutStrain,OnlyRefStrain,medicionesminimas,datExtExponential,extraPlRefs);
 
 
