@@ -14,7 +14,7 @@ for pl=pls%[10:13]
     difcol=floor( length(mapita)/(length(NuevosDias)-1) );
     for Dia=1:length(NuevosDias)-1
         for w=pozos
-            tiempos=24*(CleanData(pl).t(NuevosDias(Dia):NuevosDias(Dia+1)-1)-CleanData(pl).t(NuevosDias(Dia)));
+            tiempos=(CleanData(pl).t(NuevosDias(Dia):NuevosDias(Dia+1)-1)-CleanData(pl).t(NuevosDias(Dia)));
             cfps=log(CleanData(pl).CFP(NuevosDias(Dia):NuevosDias(Dia+1)-1,w)); cfps(isinf(cfps))=NaN;
             rfps=log(CleanData(pl).RFP(NuevosDias(Dia):NuevosDias(Dia+1)-1,w)); rfps(isinf(rfps))=NaN;
             ODs=(CleanData(pl).OD(NuevosDias(Dia):NuevosDias(Dia+1)-1,w)); ODs(isinf(ODs))=NaN;
