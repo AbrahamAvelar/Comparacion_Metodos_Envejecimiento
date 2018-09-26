@@ -1,9 +1,11 @@
+# Cómo calcular los envejecimientos relativos
+
 Aqui van los scripts que se vayan haciendo para comparar las distintas formas de calcular la S
 
 
 Para calcular la s a un tiempo fijo:
-    BgDataAll = CorrectInoculeTime(BgDataAll, platos, odTh, ExcelHorasInoculos ) %**Opcional**
-    BgDataAll = calculaTiempos(BgDataAll, platos, odTh);
-    TBgDataAll = RoCtFijo(BgDataAll,tfijo, horasExponencial, odTh, platos, pozos, figuras);
-    TBgDataAll = CalcRelatSurv(TBgDataAll, platos,odTh,pozos);
+    `BgDataAll = CorrectInoculeTime(BgDataAll, platos, odTh, ExcelHorasInoculos ) %**Opcional**`
+    `BgDataAll = calculaTiempos(BgDataAll, platos, odTh);`
+    `TBgDataAll = RoCtFijo(BgDataAll,tfijo, horasExponencial, odTh, platos, pozos, figuras);`
+    `TBgDataAll = CalcRelatSurv(TBgDataAll, platos,odTh,pozos);`
     
