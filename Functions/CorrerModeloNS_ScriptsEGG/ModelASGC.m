@@ -154,13 +154,13 @@ function [LimiteMUT_FP  LimiteREF_FP] =  FPLimits(data, MUTFP, REFFP, extraplate
 % then it is assumed that each plate has its own background references
 if extraplate
 	
-    LimiteMUT_FP = max( max( data(extraplate).mut(:,REFFP) )); %limit of the mutant's Fluorescence Protein
-    LimiteREF_FP = max( max( data(extraplate).ref(:,MUTFP ) ));
+    LimiteMUT_FP = max( max( data(extraplate).mut(:, REFFP) )); %limit of the mutant's Fluorescence Protein
+    LimiteREF_FP = max( max( data(extraplate).ref(:, MUTFP ) ));
     
 else
     
-    LimiteMUT_FP = max(max(data(p).mut(:,REFFP))); %limit of the mutant's Fluorescence Protein
-    LimiteREF_FP = max(max(data(p).ref(:,MUTFP)));
+    LimiteMUT_FP = max(max(data(p).mut(:, REFFP))); %limit of the mutant's Fluorescence Protein
+    LimiteREF_FP = max(max(data(p).ref(:, MUTFP)));
     
 end
 
