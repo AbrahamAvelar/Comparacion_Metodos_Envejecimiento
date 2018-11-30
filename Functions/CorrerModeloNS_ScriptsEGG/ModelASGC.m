@@ -23,8 +23,8 @@ for p = 1:length(plt);%p = 1:length(plt);
     pl=data(plt(p));
     intervals=intervalCriteriaS_NS(pl.od);
     days=length(intervals)-1;%el '-1' es porque en un rato hay que recorrer intervals y se necesita 'parar a tiempo'
-    %%%  AquÌ no queda claro por quÈ decidieron que algunos dÌas no se
-    %%%  contaran 14/03/15ø8 JAAR
+    %%%  Aqu√≠ no queda claro por qu√© decidieron que algunos d√≠as no se
+    %%%  contaran 14/03/15¬ø8 JAAR
     
     %data along all days
     REFC=pl.ref;
@@ -86,9 +86,9 @@ for p = 1:length(plt);%p = 1:length(plt);
     %Estimate coefficientes in all one plate
 %jaar    f=find(ismember(np_OUTG,[2:3])); % esto creo que es muy especifico de garay, podria ser que aqui es donde hay que dejar solo los puntos de fase exponencial
     if ExtractExp %si los datos vienen de haber extraido la fase exponencial dejando el primer punto de cada dia.
-        f=find(ismember(np_OUTG,[2:max(np_OUTG)])); %aquÌ solo quito la primera medicion de cada dia
+        f=find(ismember(np_OUTG,[2:max(np_OUTG)])); %aqu√≠ solo quito la primera medicion de cada dia
     else
-        f=find(ismember(np_OUTG,[1:max(np_OUTG)])); %aquÌ dejo todas las mediciones
+        f=find(ismember(np_OUTG,[1:max(np_OUTG)])); %aqu√≠ dejo todas las mediciones
     end
     
     PL=PL(f); %1536x1
@@ -104,13 +104,13 @@ for p = 1:length(plt);%p = 1:length(plt);
     
     dataplt=[PL W timeT timet LOGRC RFP CFP]; %1536*7
     
-    %seleccionar mutantes con mas de 4 dÌas de mediciÛn
+    %seleccionar mutantes con mas de 4 d√≠as de medici√≥n
     fwu=unique(W);
     remw=[];
     for tmpw=1:length(fwu);
         welli=fwu(tmpw);
         ftmp=find(ismember(W,welli));
-        if sum(isnan(LOGRC(ftmp)))>medicionesminimas; %2*4dias %NUMERO M·gico! cuantos NaNs est·s dispuesto a tolerar para que un pozo se siga procesando 
+        if sum(isnan(LOGRC(ftmp)))>medicionesminimas; %2*4dias %NUMERO M√°gico! cuantos NaNs est√°s dispuesto a tolerar para que un pozo se siga procesando 
             remw=[remw;welli];
         end;
     end;
@@ -154,13 +154,13 @@ function [LimiteMUT_FP  LimiteREF_FP] =  FPLimits(data, MUTFP, REFFP, extraplate
 % then it is assumed that each plate has its own background references
 if extraplate
 	
-    LimiteMUT_FP = max( max( data(extraplate).mut(:,MUTFP) )); %limit of the mutant's Fluorescence Protein
-    LimiteREF_FP = max( max( data(extraplate).ref(:,REFFP) ));
+    LimiteMUT_FP = max( max( data(extraplate).mut(:,REFFP) )); %limit of the mutant's Fluorescence Protein
+    LimiteREF_FP = max( max( data(extraplate).ref(:,MUTFP ) ));
     
 else
     
-    LimiteMUT_FP = max(max(data(p).mut(:,MUTFP))); %limit of the mutant's Fluorescence Protein
-    LimiteREF_FP = max(max(data(p).ref(:,REFFP)));
+    LimiteMUT_FP = max(max(data(p).mut(:,REFFP))); %limit of the mutant's Fluorescence Protein
+    LimiteREF_FP = max(max(data(p).ref(:,MUTFP)));
     
 end
 
