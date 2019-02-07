@@ -139,7 +139,7 @@ for p = 1:length(plt);%p = 1:length(plt);
     data2(plt(p)).w=wells2;
     data2(plt(p)).tDays=days2;
     
-    plt(p)
+    plt(p);
    clear Aplt; clear Splt; clear Gplt; clear Cplt;
    clear ICS; clear ICG;
 
