@@ -1,6 +1,6 @@
 function CleanData = RoCtFijo (CleanData, t, tExponencial, odTh, pls, pozos, figura)
 % BgDataAll = RoCtFijo (CleanData, t, tExponencial, odTh, pls, pozos, figura)
-% t es un vector con 2 tiempos: donde empiezan y terminan las mediciones
+% t es un vector con 2 tiempos: donde empiezan y terminan las mediciones está en horas
 % a tomar en cuenta. Idealmente seria la fase exponencial
 % tExponencial es la hora a la que se hace la interpolacion.
 % Ejemplo: CleanData = RoCtFijo(CleanData,7.5, [5 18], .3, 1:4, 1)
@@ -18,7 +18,7 @@ for pl=pls%[10:13]
             cfps=log(CleanData(pl).CFP(NuevosDias(Dia):NuevosDias(Dia+1)-1,w)); cfps(isinf(cfps))=NaN;
             rfps=log(CleanData(pl).RFP(NuevosDias(Dia):NuevosDias(Dia+1)-1,w)); rfps(isinf(rfps))=NaN;
             ODs=(CleanData(pl).OD(NuevosDias(Dia):NuevosDias(Dia+1)-1,w)); ODs(isinf(ODs))=NaN;
-            validas = find(tiempos>horaInt(1) & tiempos<horaInt(2));
+            validas = find(tiempos>horaInt(1)/24 & tiempos<horaInt(2)/24 );
             if sum(~isnan(cfps(validas)))>2 && sum(~isnan(rfps(validas))) >2
                 m=robustfit(tiempos(validas), rfps(validas)-cfps(validas)); RedOverCyan=(m(2)*ExT)+m(1); CleanData(pl).RoC(Dia,w)=RedOverCyan;
             elseif sum(~isnan(cfps(validas)))>2 && sum(~isnan(rfps(validas))) >1
