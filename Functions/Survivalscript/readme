@@ -1,0 +1,33 @@
+% getimeAA % 
+%Obtiene el tiempo desde la inoculación hasta la "od" deseada para cada día. Guarda el resultado en timeOD
+x = fixed time vector (minus hours at first point of each interval)
+y = OD vector at specific interval
+timeODtmp=[timeODtmp,interp1q(y,x',od)];
+
+
+% getgr % 
+% obtiene la tasa de crecimiento por cada día. 
+
+gwrate0=[gwrate0,interp1q(y,x,n0)]; %Obtains time at initial OD each day n0
+gwrateT=[gwrateT,interp1q(y,x,nt)]; %Obtains time at final OD each day nt
+time = gwrateT-gwrate0 % esta tiene todos los tiempos que les tomó a los cultivos en llegar de n0 a nt
+
+ % Tasa de crecimiento = k = logNt-logN0/log2*t 
+ % let Nt be final population OD at each point
+ % N0 initial population OD
+ % t= delta time difference Nt-N0
+ % Tiempo de duplicación 1/k
+
+kratetmp = (log(nt) - log(n0)) * vectmp; % nt y n0 es igual pa' todos
+logtime = log(2) * time; % este va a ser diferente para cada pozo, cada día.
+krate = kratetmp ./ logtime; % aquí sale la tasa de crecimiento
+gwratetmp = vectmp ./ krate; % aquí sale el tiempo de duplicación
+
+% getsurv %
+%function for formula survival = 1/2^(delta_Time/duplication_time)*100
+% Tal como en Murakami et al 2008 J of Ger
+
+%% getExponentialRate_fit  %%
+[decayRate] = getExponentialRate_fit(survival, 11);
+
+
