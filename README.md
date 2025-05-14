@@ -1,4 +1,12 @@
 # Comparacion_Metodos_Envejecimiento  
+
+
+Si llegaste aquí buscando correr el Modelo lineal múltiple para ajustar envejecimiento competitivo ve a este link:
+https://abrahamavelar.github.io/LinearModelCLS/
+
+
+
+
 voy a subir 3 métodos  
 1. m
 
